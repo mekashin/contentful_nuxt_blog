@@ -9,7 +9,7 @@
     </div>
   </section>
 </template>
-<script lang="ts">
+<script>
 import { createClient } from '~/plugins/contentful.js'
 
 const client = createClient()
