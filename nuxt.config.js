@@ -34,14 +34,19 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/bootstrap.css',
+    '@/assets/common.css',
+    '@/assets/style.css',
     '@/assets/style_00.css',
     '@/assets/style_01.css',
     '@/assets/style_02.css',
     '@/assets/style_03.css',
+    '@/assets/pr_style.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // '~/node_modules/@contentful/rich-text-react-renderer',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -59,6 +64,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // transpile: ['nuxt/typescript-build']
   },
   generate: {
     routes() {

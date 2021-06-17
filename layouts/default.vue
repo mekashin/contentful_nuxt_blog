@@ -1,7 +1,6 @@
 <template>
   <div>
     <!-- <link rel="stylesheet" id="child-style-css" href="~assets/style_00.css" type="text/css" media="all"> -->
-    <p>layOut</p>
     <Nuxt />
   </div>
 </template>
