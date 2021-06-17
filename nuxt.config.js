@@ -18,7 +18,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'contentful_nuxt_blog',
+    title: 'FRACTA contentful nuxt test',
     htmlAttrs: {
       lang: 'en'
     },

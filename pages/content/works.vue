@@ -3,10 +3,9 @@
     <div id="wrap-outer">
       <Header />
       <div id="wrap" class=" typesquare_option typesquare_option">
-        <div id="content" class="News & Journal typesquare_option">
+        <div id="content" class=" typesquare_option">
           <div
-            id="post-96"
-            class="post-96 page content_wrap_outer container two-cols-layout typesquare_option"
+            class="content_wrap_outer container two-cols-layout typesquare_option"
           >
             <div class="sidebar-layout row typesquare_option">
               <div
@@ -17,55 +16,42 @@
                   id="post-5247"
                   class="post-5247 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-media-2 typesquare_option"
                 >
-                  <div class="title-wrap typesquare_option">
-                    <h1 class="title-wrap-tit pr_font-Theinhardt">
-                      {{ h1_title }}
-                    </h1>
-                  </div>
-
-                  <div
-                    id="content_wrap"
-                    class="col-md-9 col-sm-9 typesquare_option"
-                  >
-                    <div
-                      class="container-masonry ux-portfolio-spacing-40 ux-portfolio-1col   container typesquare_option"
-                      data-template="blog-masonry"
-                    >
-                      <div class="masonry-list isotope  typesquare_option">
-                        <list_sec
-                          v-for="(post, i) in list_ary"
-                          :key="i"
-                          :category="post.fields.category"
-                          :title="post.fields.title"
-                          :thumbnail="post.fields"
-                          :id="post.sys.id"
-                          :date="post.sys.updatedAt"
-                          :post="post"
-                          :key_id="post.key_id"
-                          :update="post.fields.date"
-                        />
-                      </div>
-                      <!-- {{ list_ary }} -->
-                      <div
-                        class="clearfix pagenums tw_style page_twitter typesquare_option"
-                        data-pagetext="LOAD MORE ARTICLES"
-                        data-loadingtext="LOADING..."
+                  <div class=" title-wrap typesquare_option">
+                    <div class="title-wrap-con typesquare_option">
+                      <h2
+                        class="title-wrap-tit pr_fl-news-title-wrap-tit typesquare_option"
                       >
-                        <a
-                          class="tw-style-a ux-btn ux-page-load-more pr_font-Theinhardt pr_fr-news-ux-page-load-more"
-                          data-pageid="96"
-                          data-max="26"
-                          data-paged="2"
-                          href="#"
-                          >LOAD MORE ARTICLES</a
-                        >
-                      </div>
+                         {{ posts[key_id].fields.category }}<br v-if="posts[key_id].fields.category" />{{ datetostr(posts[key_id].fields.date,"YYYY年M月D日",false) }} {{ posts[key_id].fields.title }}
+                      </h2>
+                      <div class="article-meta clearfix"></div>
                     </div>
-                    <div class="container"></div>
                   </div>
 
-                  <div class="entry pr_fr-news-det-entry typesquare_option">
-                    <!-- {{ rich_txt2html(posts[key_id].fields.contents) }}  -->
+                  <div class="gird-blog-des typesquare_option">
+                    <div
+                      class="gird-blog-meta gird-blog-cate pr_font-Theinhardt"
+                    >
+                      <span class="">IN </span>
+                      <a
+                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/news/"
+                        class="grid-meta-a"
+                        >ALL</a
+                      >
+                      <a
+                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/media-2/"
+                        class="grid-meta-a"
+                        >MEDIA</a
+                      >
+                    </div>
+                    <div
+                      class="gird-blog-meta gird-blog-date pr_font-Theinhardt"
+                    >
+                      <!-- <span class="article-meta-date">{{ datetostr(posts[key_id].fields.date,"YYYY.M.D",false) }}</span> -->
+                    </div>
+                  </div>
+
+                  <div class="entry pr_fr-news-det-entry typesquare_option" v-html="rich_txt2html(posts[key_id].fields.contents)">
+                      <!-- {{ rich_txt2html(posts[key_id].fields.contents) }}  -->
                   </div>
                   <!--End entry-->
                 </article>
@@ -390,25 +376,10 @@
 </template>
 
 <script>
-// import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { createClient } from "~/plugins/contentful.js";
-import list_sec from "~/components/list_sec.vue";
 const client = createClient();
 export default {
-  components: {
-    list_sec
-  },
-  // data: function() {
-  //   category_name:this.$route.params.slug
-  //   ];
-  // },
-  // data:{
-  //   category_name:function () {
-  //     console.log(this.$route.params.slug);
-  //     return this.$route.params.slug
-
-  //   }
-  // },
   //   data: function(){
   //     return {
   //       title:'Login',
@@ -418,43 +389,32 @@ export default {
     params: function() {
       return this.$route.params;
     },
-    // key_id: function() {
-    //   console.log(this.$route.query.id);
-    //   return this.$route.query.id;
-    // },
+    key_id: function() {
+        console.log(this.$route.query.id)
+      return this.$route.query.id;
+    },
     model_type: function() {
       return "test";
-    },
-    list_ary: function() {
-      // console.log(this.posts.length);
-      // console.log(this.$route.query.id)
-      // console.log(this.$route.params)
-      let _ary = [];
-      let n = 0;
-      for (let i in this.posts) {
-        // console.log(this.posts[i].sys.contentType.sys.id);
-        this.posts[i].key_id = i;
-        if (this.posts[i].sys.contentType.sys.id == this.$route.params.slug) {
-          _ary.push(this.posts[i]);
-        }
-      }
-      return _ary;
-    },
-    h1_title: function() {
-      // console.log(this.category_name);
-      return this.$route.params.slug.toUpperCase();
     }
+    // message: function() {
+    //   let id = this.$route.params.id != undefined
+    //       ? this.$route.params.id : '*** no id ***';
+    //   let pass = this.$route.params.pass != undefined
+    //       ? this.$route.params.pass : '*** no password ***';
+    //   return 'ID：' + id  + '<br>PASS：' + pass;
+    // },
   },
   methods: {
-    // rich_txt2html: function(_d) {
-    //   return documentToHtmlString(_d);
-    // },
+    rich_txt2html:function (_d) {
+        return documentToHtmlString(_d)
+        
+    },
     datetostr: function(d, format, is12hours) {
       var weekday = ["日", "月", "火", "水", "木", "金", "土"];
       if (!format) {
         format = "YYYY/MM/DD(WW) hh:mm:dd";
       }
-      var date = new Date(d);
+      var date = new Date(d)
       var year = date.getFullYear();
       var month = date.getMonth() + 1;
       var day = date.getDate();
@@ -494,7 +454,7 @@ export default {
       });
 
       return ret;
-    }
+    },
   },
   asyncData({ env, params }) {
     return client

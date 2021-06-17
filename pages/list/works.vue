@@ -19,7 +19,7 @@
                 >
                   <div class="title-wrap typesquare_option">
                     <h1 class="title-wrap-tit pr_font-Theinhardt">
-                      {{ h1_title }}
+                     WORKS
                     </h1>
                   </div>
 
@@ -434,16 +434,16 @@ export default {
       for (let i in this.posts) {
         // console.log(this.posts[i].sys.contentType.sys.id);
         this.posts[i].key_id = i;
-        if (this.posts[i].sys.contentType.sys.id == this.$route.params.slug) {
+        if (this.posts[i].sys.contentType.sys.id == 'works') {
           _ary.push(this.posts[i]);
         }
       }
       return _ary;
     },
-    h1_title: function() {
-      // console.log(this.category_name);
-      return this.$route.params.slug.toUpperCase();
-    }
+    // h1_title: function() {
+    //   // console.log(this.category_name);
+    //   return this.$route.params.slug.toUpperCase();
+    // }
   },
   methods: {
     // rich_txt2html: function(_d) {
