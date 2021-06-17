@@ -1,6 +1,6 @@
 <template>
   <li class="newsList-item typesquare_option">
-    <nuxt-link :to="key_id + '/' + post.sys.contentType.sys.id" class="wrapper">
+    <nuxt-link :to="'/content/' + post.sys.contentType.sys.id +'?id=' + key_id" class="wrapper">
       <div class="newsList-item-thumbnail">
         <img
           width="1856"

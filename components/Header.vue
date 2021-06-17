@@ -3,7 +3,7 @@
     <div class="header-inner">
       <div class="header-left">
         <h1 class="header-logo">
-          <a href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/">
+          <a href="/">
             <img src="~assets/logo_fracta.svg" alt="FRACTA" />
           </a>
         </h1>

@@ -2,7 +2,7 @@
   <footer class="footer typesquare_option typesquare_option">
     <div class="footer-inner typesquare_option typesquare_option">
       <div class="footer-logo">
-        <a href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/"
+        <a href="/"
           ><img src="~assets/logo_fracta.svg" alt="FRACTA"
         /></a>
       </div>

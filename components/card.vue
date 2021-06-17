@@ -2,7 +2,7 @@
 <div>
 <hr/>
   <nuxt-link
-    :to="key_id + '/' + post.sys.contentType.sys.id"
+    :to="'/content/' + post.sys.contentType.sys.id +'?id=' + key_id"
     class="wrapper"
   >
     <article class="card">

@@ -46,7 +46,7 @@
                     <div
                       class="gird-blog-meta gird-blog-date pr_font-Theinhardt"
                     >
-                      <span class="article-meta-date">{{ datetostr(posts[key_id].fields.date,"YYYY.M.D",false) }}</span>
+                      <!-- <span class="article-meta-date">{{ datetostr(posts[key_id].fields.date,"YYYY.M.D",false) }}</span> -->
                     </div>
                   </div>
 
@@ -390,8 +390,8 @@ export default {
       return this.$route.params;
     },
     key_id: function() {
-        console.log(this.$route.params.id)
-      return this.$route.params.id;
+        console.log(this.$route.query.id)
+      return this.$route.query.id;
     },
     model_type: function() {
       return "test";
