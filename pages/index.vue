@@ -1,33 +1,10 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        sample_01_test02
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-    <!-- <section class="index">
-      <p>card</p>
-      <card v-for="i in 5" :key="i" />
-    </section> -->
+  <div>
+    <Header />
+     <link href="~assets/style_00.css" type="text/css" media="all">
+
+    <p>{{ posts }}</p>
+    <p class="img"><img src="~assets/objctsio_pic2.png"></p>
     <section class="index">
       <card
         v-for="(post, i) in posts"
@@ -35,23 +12,26 @@
         :title="post.fields.title"
         :id="post.sys.id"
         :date="post.sys.updatedAt"
+        :post='post'
+        :key_id='i'
       />
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
 // export default {};
-import Card from '~/components/card.vue'
-import { createClient } from '~/plugins/contentful.js'
+import Card from "~/components/card.vue";
+import { createClient } from "~/plugins/contentful.js";
 // export default {
 //   components: {
 //     Card
 //   }
 // };
-const client = createClient()
+const client = createClient();
 export default {
-  transition: 'slide-left',
+  transition: "slide-left",
   components: {
     Card
   },
@@ -61,11 +41,11 @@ export default {
       .then(entries => {
         return {
           posts: entries.items
-        }
+        };
       })
-      .catch(console.error)
+      .catch(console.error);
   }
-}
+};
 </script>
 
 <style>

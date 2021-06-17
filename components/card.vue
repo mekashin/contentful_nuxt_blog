@@ -1,16 +1,19 @@
 <template>
+<div>
+<hr/>
   <nuxt-link
-    :to="{ name: 'blog-slug', params: {
-      sys: id
-    }}"
+    :to="key_id + '/' + post.sys.contentType.sys.id"
     class="wrapper"
   >
     <article class="card">
       <h1 class="card_title">{{ title }}</h1>
+      <p>{{key_id}}</p>
       <p class="card_text">{{ id }}</p>
       <p class="card_date">{{ date }}</p>
+      <p class="card_date">{{ post.sys.contentType.sys.id }}</p>
     </article>
   </nuxt-link>
+</div>
 </template>
 <script>
 export default {
@@ -26,6 +29,13 @@ export default {
     date: {
       type: String,
       default: ''
+    },
+    key_id: {
+      type: Number,
+      default: 0
+    },    
+    post: {
+      default: 0
     }
   }
 }
