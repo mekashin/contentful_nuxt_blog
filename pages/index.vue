@@ -176,7 +176,8 @@ export default {
       for (let i in this.posts) {
         console.log(this.posts[i].sys.contentType.sys.id);
         this.posts[i].key_id = 1*i;
-        if (this.posts[i].sys.contentType.sys.id == "news" && n < 2) {
+        if (this.posts[i].sys.contentType.sys.id == "news" && n < 3) {
+          ++n
           _ary.push(this.posts[i]);
         }
       }
@@ -189,7 +190,8 @@ export default {
       for (let i in this.posts) {
         console.log(this.posts[i].sys.contentType.sys.id);
         this.posts[i].key_id = 1*i;
-        if (this.posts[i].sys.contentType.sys.id == "works" && n < 2) {
+        if (this.posts[i].sys.contentType.sys.id == "works" && n < 3) {
+          ++n
           _ary.push(this.posts[i]);
         }
       }
