@@ -46,8 +46,8 @@
                   />
                 </ul>
                 <div class="frontpage-news-btn typesquare_option">
-                  <a
-                    href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/news"
+                  <nuxt-link
+                    to="/list/news"
                     class="btn _more typesquare_option"
                   >
                     <span class=" typesquare_option">News</span>
@@ -76,7 +76,7 @@
                         ></line>
                       </g>
                     </svg>
-                  </a>
+                  </nuxt-link>
                 </div>
               </div>
             </div>
@@ -117,17 +117,17 @@ export default {
       return true;
     },
     news_ary: function() {
-      console.log(this.posts.length)
+      console.log(this.posts.length);
       let _ary = [];
       let n = 0;
-      for(let i in this.posts){
-        console.log(this.posts[i].sys.contentType.sys.id)
+      for (let i in this.posts) {
+        console.log(this.posts[i].sys.contentType.sys.id);
         this.posts[i].key_id = i;
-        if(this.posts[i].sys.contentType.sys.id == 'news' && n < 2){
-          _ary.push(this.posts[i])
-        }        
+        if (this.posts[i].sys.contentType.sys.id == "news" && n < 2) {
+          _ary.push(this.posts[i]);
+        }
       }
-      return _ary
+      return _ary;
     }
   },
   asyncData({ env, params }) {
@@ -141,7 +141,6 @@ export default {
       .catch(console.error);
   }
 };
-
 </script>
 
 <style></style>
