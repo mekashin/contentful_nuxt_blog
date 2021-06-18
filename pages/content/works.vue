@@ -94,7 +94,7 @@
                       />
                     </ul>
                   </li>
-                  <li class="widget-container widget_archive typesquare_option">
+                  <!-- <li class="widget-container widget_archive typesquare_option">
                     <h3 class="widget-title typesquare_option">
                       <span class="widget-title-inn typesquare_option"
                         >アーカイブ</span
@@ -108,7 +108,7 @@
                         :category="category_id"
                       />
                     </ul>
-                  </li>
+                  </li> -->
                 </ul>
               </aside>
             </div>
