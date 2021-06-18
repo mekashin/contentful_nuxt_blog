@@ -3,118 +3,94 @@
     <div id="wrap-outer">
       <Header />
       <div id="wrap" class=" typesquare_option typesquare_option">
-        <div id="content" class="News & Journal typesquare_option">
+        <div id="content" class="TOP typesquare_option">
           <div
-            id="post-96"
-            class="post-96 page content_wrap_outer container two-cols-layout typesquare_option"
+            id="post-9"
+            class="post-9 page type-page status-publish hentry typesquare_option"
           >
-            <div class="sidebar-layout row typesquare_option">
-              <div
-                id="content_wrap"
-                class="col-md-9 col-sm-9 typesquare_option"
-              >
-                <article
-                  id="post-5247"
-                  class="post-5247 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-media-2 typesquare_option"
+            <section class="pr_fr-workslist-area typesquare_option">
+              <div class="pr_fr-workslist-inner typesquare_option">
+                <h1
+                  class="pr_fr-workslist-ttl pr_font-Theinhardt title-wrap-tit"
                 >
-                  <div class="title-wrap typesquare_option">
-                    <h1 class="title-wrap-tit pr_font-Theinhardt">
-                      {{ title_h1 }}
-                    </h1>
-                  </div>
-
-                  <div
-                    id="content_wrap"
-                    class="col-md-9 col-sm-9 typesquare_option"
-                  >
-                    <div
-                      class="container-masonry ux-portfolio-spacing-40 ux-portfolio-1col   container typesquare_option"
-                      data-template="blog-masonry"
-                    >
-                      <div class="masonry-list isotope  typesquare_option">
-                        <list_sec
-                          v-for="(post, i) in list_ary"
-                          :key="i"
-                          :category="post.fields.category"
-                          :title="post.fields.title"
-                          :thumbnail="post.fields"
-                          :id="post.sys.id"
-                          :date="post.sys.updatedAt"
-                          :post="post"
-                          :key_id="post.key_id"
-                          :update="post.fields.date"
-                          :category_id="category_name"
-                          :tag_list='tag_list_flg'
-                        />
-                      </div>
-                      <!-- {{ list_ary }} -->
-                      <div
-                        class="clearfix pagenums tw_style page_twitter typesquare_option"
-                        data-pagetext="LOAD MORE ARTICLES"
-                        data-loadingtext="LOADING..."
-                      >
-                        <a
-                          class="tw-style-a ux-btn ux-page-load-more pr_font-Theinhardt pr_fr-news-ux-page-load-more"
-                          data-pageid="96"
-                          data-max="26"
-                          data-paged="2"
-                          href="#"
-                          >LOAD MORE ARTICLES</a
-                        >
-                      </div>
-                    </div>
-                    <div class="container"></div>
-                  </div>
-
-                  <div class="entry pr_fr-news-det-entry typesquare_option">
-                    <!-- {{ rich_txt2html(posts[key_id].fields.contents) }}  -->
-                  </div>
-                  <!--End entry-->
-                </article>
-                <!--end article-->
-              </div>
-              <!--End content_wrap-->
-
-              <aside
-                id="sidebar-widget"
-                class="col-md-3 col-sm-3 typesquare_option"
-              >
-                <ul class="sidebar_widget typesquare_option">
-                  <li
-                    class="widget-container widget_categories typesquare_option"
-                  >
-                    <h3 class="widget-title typesquare_option">
-                      <span class="widget-title-inn typesquare_option"
-                        >カテゴリー</span
-                      >
-                    </h3>
-                    <ul class=" typesquare_option">
-                          <side_tag
+                  {{ title_h1 }}
+                </h1>
+                <ul class="pr_fr-workslist-nav pr_font-Theinhardt">
+  
+                      <side_tag
                         v-for="(_t, i) in slide_tag_list"
                         :key="i"
                         :tag="_t"
                         :category="category_name"
                       />
-                    </ul>
-                  </li>
-                  <li class="widget-container widget_archive typesquare_option">
-                    <h3 class="widget-title typesquare_option">
-                      <span class="widget-title-inn typesquare_option"
-                        >アーカイブ</span
-                      >
-                    </h3>
-                    <ul class=" typesquare_option">
-                      <archive
-                        v-for="(_t, i) in archive_list"
-                        :key="i"
-                        :tag="_t"
-                        :category="category_name"
-                      />
-                    </ul>
-                  </li>
+                  <!--
+			<li><a href="#">All</a></li>
+			<li><a href="#">Branding</a></li>
+			<li><a href="#">Website</a></li>
+			<li><a href="#">Consulting</a></li>
+			<li><a href="#">Promotion</a></li>
+			<li><a href="#">Product</a></li>
+			<li><a href="#">Training</a></li>
+			 -->
                 </ul>
-              </aside>
-            </div>
+                <!-- <div class="pr_fr-workslist-heading typesquare_option">
+                  <div
+                    class="pr_fr-workslist-h-img js_pr_bgtransfer-target"
+                    style='background-image: url("http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/wp-content/uploads/2020/06/2020SS_TOC_main.jpg");'
+                  >
+                    <img
+                      class="js_pr_bgtransfer-ref"
+                      src="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/wp-content/uploads/2020/06/2020SS_TOC_main.jpg"
+                      alt="naturaglacé 2020 SS touch on colors"
+                    />
+                  </div>
+                  <dl class="pr_fr-workslist-h-det typesquare_option">
+                    <dt class="pr_fr-workslist-h-dttl pr_font-Theinhardt">
+                      naturaglacé 2020 SS touch on colors
+                    </dt>
+                    <dd class="pr_fr-workslist-h-dcont typesquare_option">
+                      <div
+                        class="pr_fr-workslist-h-date pr_font-midashigo typesquare_option"
+                      >
+                        2020.03 ｜ 株式会社ネイチャーズウェイ
+                      </div>
+                      <p
+                        class="pr_fr-workslist-h-lead pr_font-midashigo typesquare_option"
+                      >
+                        2020年春新アイテムのカラー訴求キャンペーン
+                        キービジュアルの制作、店頭ツールへの展開を担当。
+                      </p>
+                      <p></p>
+                      <div class="pr_fl-com-section-more-btn typesquare_option">
+                        <a
+                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/works/naturaglace-2020-ss-touch-on-colors/"
+                          class=" typesquare_option"
+                          ><span class="pr_font-Theinhardt">DETAIL</span></a
+                        >
+                      </div>
+                    </dd>
+                  </dl>
+                </div> -->
+                <div id="js_pr_fr-move-work-slug-position"></div>
+
+                <ul class="pr_fr-workslist-list pr_font-raleway">
+                       <list_sec_works
+                    v-for="(post, i) in list_ary"
+                    :key="i"
+                    :category="post.fields.category"
+                    :title="post.fields.title"
+                    :thumbnail="post.fields"
+                    :id="post.sys.id"
+                    :date="post.sys.updatedAt"
+                    :post="post"
+                    :key_id="post.key_id"
+                    :update="post.fields.date"
+                    :category_id="category_name"
+                    :tag_list="tag_list_flg"
+                  />
+                </ul>
+              </div>
+            </section>
           </div>
           <!--End content_wrap_outer-->
         </div>
@@ -127,13 +103,13 @@
 <script>
 // import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { createClient } from "~/plugins/contentful.js";
-import side_tag from "~/components/side_tag.vue";
-import list_sec from "~/components/list_sec.vue";
+import side_tag from "~/components/side_tag_works.vue";
+import list_sec_works from "~/components/list_sec_works.vue";
 import archive from "~/components/archive.vue";
 const client = createClient();
 export default {
   components: {
-    list_sec,
+    list_sec_works,
     side_tag,
     archive
   },
@@ -141,7 +117,7 @@ export default {
     return {
       category_name: "works",
       tag_list_flg: true,
-      title_h1_archive_flg:false,
+      title_h1_archive_flg: false
     };
   },
   computed: {
@@ -163,18 +139,21 @@ export default {
         this.posts[i].key_id = i;
         if (this.posts[i].sys.contentType.sys.id == this.category_name) {
           if (!this.$route.query.tag || this.$route.query.tag == "ALL") {
-            let _date_yyyy_mm = this.datetostr(this.posts[i].fields.date, "YYYY_MM", false)
+            let _date_yyyy_mm = this.datetostr(
+              this.posts[i].fields.date,
+              "YYYY_MM",
+              false
+            );
 
             // console.log(this.$route.query.archive);
             // console.log(_date_yyyy_mm);
-            if(!this.$route.query.archive){
+            if (!this.$route.query.archive) {
               _ary.push(this.posts[i]);
-            }else if(this.$route.query.archive == _date_yyyy_mm){
+            } else if (this.$route.query.archive == _date_yyyy_mm) {
               _ary.push(this.posts[i]);
               this.title_h1_archive_flg = true;
               // this.title_h1 = 'ARCHIVES'
             }
-            
           } else {
             // console.log(this.posts[i].fields.tags);
             if (!this.posts[i].fields.tags) {
@@ -194,26 +173,27 @@ export default {
     archive_list: function() {
       let arr = [];
       for (let i in this.posts) {
-        if(this.posts[i].sys.contentType.sys.id == this.category_name){
+        if (this.posts[i].sys.contentType.sys.id == this.category_name) {
           // return
-       
-        // console.log(this.datetostr(this.posts[i].fields.date, "YYYYMM", false));
-        let yyyymm = this.datetostr(
-          this.posts[i].fields.date,
-          "YYYY_MM",
-          false
-        );
-        let arr_add_flg = 0;
-        for (let j in arr) {
-          if (arr[j] != yyyymm) {
-            ++arr_add_flg;
+
+          // console.log(this.datetostr(this.posts[i].fields.date, "YYYYMM", false));
+          let yyyymm = this.datetostr(
+            this.posts[i].fields.date,
+            "YYYY_MM",
+            false
+          );
+          let arr_add_flg = 0;
+          for (let j in arr) {
+            if (arr[j] != yyyymm) {
+              ++arr_add_flg;
+            }
+          }
+          if (arr_add_flg == arr.length) {
+            arr_add_flg = 0;
+            arr.push(yyyymm);
           }
         }
-        if (arr_add_flg == arr.length) {
-          arr_add_flg = 0;
-          arr.push(yyyymm);
-        }
-      } }
+      }
       arr.sort(function(a, b) {
         if (a > b) return -1;
         if (a < b) return 1;
@@ -251,8 +231,8 @@ export default {
     },
     title_h1: function(params) {
       // console.log(this.$route.query);
-      if(this.title_h1_archive_flg){
-        return "ARCHIVE"
+      if (this.title_h1_archive_flg) {
+        return "ARCHIVE";
       }
       if (this.$route.query.tag && this.$route.query.tag != "ALL") {
         return this.$route.query.tag.toUpperCase();
