@@ -15,17 +15,13 @@
       </nuxt-link>
       <div class="gird-blog typesquare_option">
         <div class="gird-blog-meta gird-blog-cate pr_font-Theinhardt">
-          <span class="">IN </span
-          ><a
-            href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/news/"
-            class="grid-meta-a"
-            >ALL</a
-          >
-          <a
-            href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/media-2/"
-            class="grid-meta-a"
-            >MEDIA</a
-          >
+          <span class="">IN </span>
+          <tag
+            v-for="(_t, i) in tag_list"
+            :key="i"
+            :tag="_t"
+            :category="category_id"
+          />
         </div>
         <h2 class="gird-blog-tit pr_fr-news-arvhive-tit typesquare_option">
           <nuxt-link
@@ -39,14 +35,20 @@
           >
         </h2>
         <div class="gird-blog-meta gird-blog-date typesquare_option">
-          <span class="article-meta-date pr_font-Theinhardt">{{ datetostr(post.fields.date,'YYYY.M.D',false) }}</span>
+          <span class="article-meta-date pr_font-Theinhardt">{{
+            datetostr(post.fields.date, "YYYY.M.D", false)
+          }}</span>
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
+import tag from "~/components/tag.vue";
 export default {
+  components: {
+    tag
+  },
   methods: {
     datetostr: function(d, format, is12hours) {
       var weekday = ["日", "月", "火", "水", "木", "金", "土"];
@@ -98,6 +100,10 @@ export default {
   computed: {
     thumbnail: function() {
       return this.post.fields.thumbnail.fields;
+    },
+    tag_list:function (params) {
+        // console.log(this.post.fields);        
+        return this.post.fields.tags
     }
   },
   props: {
@@ -123,7 +129,15 @@ export default {
     },
     post: {
       default: 0
-    }
+    },
+    category_id: {
+      type: String,
+      default: ""
+    },
+    // tag_list: {
+    //   type: Boolean,
+    //   default: true
+    // }
   }
 };
 </script>

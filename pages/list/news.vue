@@ -19,7 +19,7 @@
                 >
                   <div class="title-wrap typesquare_option">
                     <h1 class="title-wrap-tit pr_font-Theinhardt">
-                      NEWS
+                      {{ title_h1 }}
                     </h1>
                   </div>
 
@@ -43,6 +43,8 @@
                           :post="post"
                           :key_id="post.key_id"
                           :update="post.fields.date"
+                          :category_id="category_name"
+                          :tag_list='tag_list_flg'
                         />
                       </div>
                       <!-- {{ list_ary }} -->
@@ -398,30 +400,16 @@ export default {
   components: {
     list_sec
   },
-  // data: function() {
-  //   category_name:this.$route.params.slug
-  //   ];
-  // },
-  // data:{
-  //   category_name:function () {
-  //     console.log(this.$route.params.slug);
-  //     return this.$route.params.slug
-
-  //   }
-  // },
-  //   data: function(){
-  //     return {
-  //       title:'Login',
-  //     };
-  //   },
+  data: function() {
+    return {
+      category_name: "news",
+      tag_list_flg: true
+    };
+  },
   computed: {
     params: function() {
       return this.$route.params;
     },
-    // key_id: function() {
-    //   console.log(this.$route.query.id);
-    //   return this.$route.query.id;
-    // },
     model_type: function() {
       return "test";
     },
@@ -434,21 +422,35 @@ export default {
       for (let i in this.posts) {
         // console.log(this.posts[i].sys.contentType.sys.id);
         this.posts[i].key_id = i;
-        if (this.posts[i].sys.contentType.sys.id == 'news') {
-          _ary.push(this.posts[i]);
+        if (this.posts[i].sys.contentType.sys.id == this.category_name) {
+          if (!this.$route.query.tag || this.$route.query.tag == "ALL") {
+            _ary.push(this.posts[i]);
+          } else {
+            console.log(this.posts[i].fields.tags);
+            if (!this.posts[i].fields.tags) {
+              return;
+            }
+            for (let j in this.posts[i].fields.tags) {
+              if (this.posts[i].fields.tags[j] == this.$route.query.tag) {
+                this.tag_list_flg = false;
+                _ary.push(this.posts[i]);
+              }
+            }
+          }
         }
       }
       return _ary;
     },
-    // h1_title: function() {
-    //   // console.log(this.category_name);
-    //   return this.$route.params.slug.toUpperCase();
-    // }
+    title_h1: function(params) {
+      // console.log(this.$route.query);
+      if (this.$route.query.tag && this.$route.query.tag != "ALL") {
+        return this.$route.query.tag.toUpperCase();
+      } else {
+        return this.category_name.toUpperCase();
+      }
+    }
   },
   methods: {
-    // rich_txt2html: function(_d) {
-    //   return documentToHtmlString(_d);
-    // },
     datetostr: function(d, format, is12hours) {
       var weekday = ["日", "月", "火", "水", "木", "金", "土"];
       if (!format) {

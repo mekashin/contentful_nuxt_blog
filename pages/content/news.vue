@@ -32,16 +32,13 @@
                       class="gird-blog-meta gird-blog-cate pr_font-Theinhardt"
                     >
                       <span class="">IN </span>
-                      <a
-                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/news/"
-                        class="grid-meta-a"
-                        >ALL</a
-                      >
-                      <a
-                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/media-2/"
-                        class="grid-meta-a"
-                        >MEDIA</a
-                      >
+                                <tag
+            v-for="(_t, i) in tag_list"
+            :key="i"
+            :tag="_t"
+            :category="category_id"
+          />
+
                     </div>
                     <div
                       class="gird-blog-meta gird-blog-date pr_font-Theinhardt"
@@ -376,10 +373,25 @@
 </template>
 
 <script>
+import tag from "~/components/tag.vue";
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { createClient } from "~/plugins/contentful.js";
 const client = createClient();
 export default {
+  components: {
+    tag
+  },
+  props: {
+    post: {
+      default: 0
+    },
+  },
+  data: function() {
+    return {
+      category_id: "news",
+      tag_list_flg: true
+    };
+  },
   //   data: function(){
   //     return {
   //       title:'Login',
@@ -395,14 +407,10 @@ export default {
     },
     model_type: function() {
       return "test";
+    },
+    tag_list:function (params) {
+        return this.posts[this.key_id].fields.tags
     }
-    // message: function() {
-    //   let id = this.$route.params.id != undefined
-    //       ? this.$route.params.id : '*** no id ***';
-    //   let pass = this.$route.params.pass != undefined
-    //       ? this.$route.params.pass : '*** no password ***';
-    //   return 'ID：' + id  + '<br>PASS：' + pass;
-    // },
   },
   methods: {
     rich_txt2html:function (_d) {
