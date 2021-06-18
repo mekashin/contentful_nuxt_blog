@@ -21,7 +21,15 @@
                       <h2
                         class="title-wrap-tit pr_fl-news-title-wrap-tit typesquare_option"
                       >
-                         {{ posts[key_id].fields.category }}<br v-if="posts[key_id].fields.category" />{{ datetostr(posts[key_id].fields.date,"YYYY年M月D日",false) }} {{ posts[key_id].fields.title }}
+                        {{ posts[key_id].fields.category
+                        }}<br v-if="posts[key_id].fields.category" />{{
+                          datetostr(
+                            posts[key_id].fields.date,
+                            "YYYY年M月D日",
+                            false
+                          )
+                        }}
+                        {{ posts[key_id].fields.title }}
                       </h2>
                       <div class="article-meta clearfix"></div>
                     </div>
@@ -32,16 +40,12 @@
                       class="gird-blog-meta gird-blog-cate pr_font-Theinhardt"
                     >
                       <span class="">IN </span>
-                      <a
-                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/news/"
-                        class="grid-meta-a"
-                        >ALL</a
-                      >
-                      <a
-                        href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/media-2/"
-                        class="grid-meta-a"
-                        >MEDIA</a
-                      >
+                      <tag
+                        v-for="(_t, i) in tag_list"
+                        :key="i"
+                        :tag="_t"
+                        :category="category_id"
+                      />
                     </div>
                     <div
                       class="gird-blog-meta gird-blog-date pr_font-Theinhardt"
@@ -50,8 +54,11 @@
                     </div>
                   </div>
 
-                  <div class="entry pr_fr-news-det-entry typesquare_option" v-html="rich_txt2html(posts[key_id].fields.contents)">
-                      <!-- {{ rich_txt2html(posts[key_id].fields.contents) }}  -->
+                  <div
+                    class="entry pr_fr-news-det-entry typesquare_option"
+                    v-html="rich_txt2html(posts[key_id].fields.contents)"
+                  >
+                    <!-- {{ rich_txt2html(posts[key_id].fields.contents) }}  -->
                   </div>
                   <!--End entry-->
                 </article>
@@ -73,54 +80,18 @@
                       >
                     </h3>
                     <ul class=" typesquare_option">
-                      <li class="cat-item cat-item-51">
+                      <!-- <li class="cat-item cat-item-51">
                         <a
                           href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/feature/"
                         >
                         </a>
-                      </li>
-                      <li class="cat-item cat-item-20 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/news/"
-                          class=" typesquare_option"
-                          >ALL</a
-                        >
-                      </li>
-                      <li class="cat-item cat-item-26 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/event/"
-                          class=" typesquare_option"
-                          >EVENT</a
-                        >
-                      </li>
-                      <li class="cat-item cat-item-1 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/journal/"
-                          class=" typesquare_option"
-                          >JOURNAL</a
-                        >
-                      </li>
-                      <li class="cat-item cat-item-28 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/media-2/"
-                          class=" typesquare_option"
-                          >MEDIA</a
-                        >
-                      </li>
-                      <li class="cat-item cat-item-29 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/press-2/"
-                          class=" typesquare_option"
-                          >PRESS</a
-                        >
-                      </li>
-                      <li class="cat-item cat-item-25 typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/category/report/"
-                          class=" typesquare_option"
-                          >REPORT</a
-                        >
-                      </li>
+                      </li> -->
+                      <side_tag
+                        v-for="(_t, i) in slide_tag_list"
+                        :key="i"
+                        :tag="_t"
+                        :category="category_id"
+                      />
                     </ul>
                   </li>
                   <li class="widget-container widget_archive typesquare_option">
@@ -130,237 +101,12 @@
                       >
                     </h3>
                     <ul class=" typesquare_option">
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2021/04/"
-                          class=" typesquare_option"
-                          >2021年4月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/11/"
-                          class=" typesquare_option"
-                          >2020年11月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/10/"
-                          class=" typesquare_option"
-                          >2020年10月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/09/"
-                          class=" typesquare_option"
-                          >2020年9月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/08/"
-                          class=" typesquare_option"
-                          >2020年8月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/07/"
-                          class=" typesquare_option"
-                          >2020年7月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/06/"
-                          class=" typesquare_option"
-                          >2020年6月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/05/"
-                          class=" typesquare_option"
-                          >2020年5月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/04/"
-                          class=" typesquare_option"
-                          >2020年4月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/03/"
-                          class=" typesquare_option"
-                          >2020年3月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/02/"
-                          class=" typesquare_option"
-                          >2020年2月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2020/01/"
-                          class=" typesquare_option"
-                          >2020年1月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/12/"
-                          class=" typesquare_option"
-                          >2019年12月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/11/"
-                          class=" typesquare_option"
-                          >2019年11月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/10/"
-                          class=" typesquare_option"
-                          >2019年10月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/09/"
-                          class=" typesquare_option"
-                          >2019年9月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/08/"
-                          class=" typesquare_option"
-                          >2019年8月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/07/"
-                          class=" typesquare_option"
-                          >2019年7月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/05/"
-                          class=" typesquare_option"
-                          >2019年5月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/04/"
-                          class=" typesquare_option"
-                          >2019年4月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/03/"
-                          class=" typesquare_option"
-                          >2019年3月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/02/"
-                          class=" typesquare_option"
-                          >2019年2月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2019/01/"
-                          class=" typesquare_option"
-                          >2019年1月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/12/"
-                          class=" typesquare_option"
-                          >2018年12月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/11/"
-                          class=" typesquare_option"
-                          >2018年11月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/10/"
-                          class=" typesquare_option"
-                          >2018年10月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/09/"
-                          class=" typesquare_option"
-                          >2018年9月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/08/"
-                          class=" typesquare_option"
-                          >2018年8月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/07/"
-                          class=" typesquare_option"
-                          >2018年7月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/06/"
-                          class=" typesquare_option"
-                          >2018年6月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/05/"
-                          class=" typesquare_option"
-                          >2018年5月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/02/"
-                          class=" typesquare_option"
-                          >2018年2月</a
-                        >
-                      </li>
-                      <li class=" typesquare_option">
-                        <a
-                          href="http://ec2-18-236-107-130.us-west-2.compute.amazonaws.com/2018/01/"
-                          class=" typesquare_option"
-                          >2018年1月</a
-                        >
-                      </li>
+                      <archive
+                        v-for="(_t, i) in archive_list"
+                        :key="i"
+                        :tag="_t"
+                        :category="category_id"
+                      />
                     </ul>
                   </li>
                 </ul>
@@ -376,10 +122,29 @@
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import tag from "~/components/tag.vue";
+import archive from "~/components/archive.vue";
+import side_tag from "~/components/side_tag.vue";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { createClient } from "~/plugins/contentful.js";
 const client = createClient();
 export default {
+  components: {
+    tag,
+    side_tag,
+    archive
+  },
+  props: {
+    post: {
+      default: 0
+    }
+  },
+  data: function() {
+    return {
+      category_id: "works",
+      tag_list_flg: true
+    };
+  },
   //   data: function(){
   //     return {
   //       title:'Login',
@@ -390,31 +155,81 @@ export default {
       return this.$route.params;
     },
     key_id: function() {
-        console.log(this.$route.query.id)
+      console.log(this.$route.query.id);
       return this.$route.query.id;
     },
     model_type: function() {
       return "test";
+    },
+    tag_list: function(params) {
+      return this.posts[this.key_id].fields.tags;
+    },
+    archive_list: function() {
+      let arr = [];
+      for (let i in this.posts) {
+        console.log(this.datetostr(this.posts[i].fields.date, "YYYYMM", false));
+        let yyyymm = this.datetostr(
+          this.posts[i].fields.date,
+          "YYYY_MM",
+          false
+        );
+        let arr_add_flg = 0;
+        for (let j in arr) {
+          if (arr[j] != yyyymm) {
+            ++arr_add_flg;
+          }
+        }
+        if (arr_add_flg == arr.length) {
+          arr_add_flg = 0;
+          arr.push(yyyymm);
+        }
+      }
+      arr.sort(function(a, b) {
+        if (a > b) return -1;
+        if (a < b) return 1;
+        return 0;
+      });
+
+      return arr;
+    },
+    slide_tag_list: function() {
+      let arr = ["ALL"];
+      for (let i in this.posts) {
+        // console.log(this.category_id);
+        if (this.posts[i].sys.contentType.sys.id == this.category_id) {
+          // console.log( this.posts[i].fields.tags);
+          for (let j in this.posts[i].fields.tags) {
+            // console.log(this.posts[i].fields.tags[j]);
+            let arr_add_flg = 0;
+            for (let k in arr) {
+              if (arr[k] != this.posts[i].fields.tags[j]) {
+                ++arr_add_flg;
+              }
+            }
+            if (arr_add_flg == arr.length) {
+              arr_add_flg = 0;
+              arr.push(this.posts[i].fields.tags[j]);
+            }
+            // arr_flg = false
+            //   arr.push(this.posts[i].fields.tags[j])
+          }
+          this.posts[i].fields.tags;
+        }
+      }
+
+      return arr;
     }
-    // message: function() {
-    //   let id = this.$route.params.id != undefined
-    //       ? this.$route.params.id : '*** no id ***';
-    //   let pass = this.$route.params.pass != undefined
-    //       ? this.$route.params.pass : '*** no password ***';
-    //   return 'ID：' + id  + '<br>PASS：' + pass;
-    // },
   },
   methods: {
-    rich_txt2html:function (_d) {
-        return documentToHtmlString(_d)
-        
+    rich_txt2html: function(_d) {
+      return documentToHtmlString(_d);
     },
     datetostr: function(d, format, is12hours) {
       var weekday = ["日", "月", "火", "水", "木", "金", "土"];
       if (!format) {
         format = "YYYY/MM/DD(WW) hh:mm:dd";
       }
-      var date = new Date(d)
+      var date = new Date(d);
       var year = date.getFullYear();
       var month = date.getMonth() + 1;
       var day = date.getDate();
@@ -454,7 +269,7 @@ export default {
       });
 
       return ret;
-    },
+    }
   },
   asyncData({ env, params }) {
     return client
